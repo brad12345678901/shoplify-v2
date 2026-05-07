@@ -5,6 +5,8 @@ import org.hibernate.annotations.SoftDelete;
 import org.hibernate.annotations.SoftDeleteType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 @EntityListeners(AuditingEntityListener.class)
@@ -33,6 +35,9 @@ public class Product extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable=false)
     private Category category;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.DETACH)
+    private List<ProductImages> productImages;
 
     public long getId() {
         return id;

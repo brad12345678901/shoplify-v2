@@ -50,7 +50,7 @@ public class ProductController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(consumes = {"multipart/form-data"})
     public ResponseEntity<APIResponse<Product>> createProduct(@Valid @ModelAttribute ProductForm dto) {
         Product newProduct = productService.saveProduct(dto);
 

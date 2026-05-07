@@ -5,7 +5,9 @@ import com.shoplify.ecommerce_springboot.exception.ResourceNotFoundException;
 import com.shoplify.ecommerce_springboot.model.Category;
 import com.shoplify.ecommerce_springboot.model.Product;
 import com.shoplify.ecommerce_springboot.repository.CategoryRepository;
+import com.shoplify.ecommerce_springboot.repository.ProductImageRepository;
 import com.shoplify.ecommerce_springboot.repository.ProductRepository;
+import com.shoplify.ecommerce_springboot.service.FileService;
 import com.shoplify.ecommerce_springboot.service.ProductService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +20,15 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     ProductRepository product_db;
+    ProductImageRepository productimage_db;
     CategoryRepository category_db;
+    FileService fileService;
 
-    public ProductServiceImpl(ProductRepository product_db, CategoryRepository category_db) {
+    public ProductServiceImpl(ProductRepository product_db, CategoryRepository category_db, ProductImageRepository productimage_db, FileService fileService) {
         this.product_db = product_db;
         this.category_db = category_db;
+        this.productimage_db = productimage_db;
+        this.fileService = fileService;
     }
 
     public List<Product> findAllProducts() {
@@ -32,6 +38,12 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public Product saveProduct(ProductForm dto) {
         Category referenceCategory = category_db.findById(dto.category()).orElseThrow(() -> new ResourceNotFoundException("Category ID "+dto.category()+" was not found"));
+
+        try {
+            String test = fileService.saveFile(dto.file());
+        } catch (Exception e) {
+            System.out.println("EXCEPTION");
+        }
 
         Product createdProduct = new Product();
 

@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 public record ProductForm(
         @NotBlank(message = "Product name is Required")
@@ -21,6 +22,8 @@ public record ProductForm(
         @Min(value = 0, message = "Stocks cannot be lower than 0")
         Integer stock,
         @NotNull(message = "Product Category is required")
-        Long category
+        Long category,
+        @NotNull(message = "Provide an image of your product")
+        MultipartFile file
 ) {
 }
