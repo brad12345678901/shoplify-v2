@@ -1,6 +1,6 @@
 package com.shoplify.ecommerce_springboot.service;
 
-import DTO.ProductForm;
+import com.shoplify.ecommerce_springboot.DTO.ProductForm;
 import com.shoplify.ecommerce_springboot.model.Product;
 
 import java.util.List;

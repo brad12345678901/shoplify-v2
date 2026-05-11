@@ -1,6 +1,6 @@
 package com.shoplify.ecommerce_springboot.exception;
 
-import DTO.ErrorResponse;
+import com.shoplify.ecommerce_springboot.DTO.ErrorResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

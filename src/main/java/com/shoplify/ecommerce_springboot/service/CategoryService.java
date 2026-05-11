@@ -2,7 +2,7 @@ package com.shoplify.ecommerce_springboot.service;
 
 import com.shoplify.ecommerce_springboot.model.Category;
 import java.util.List;
-import DTO.CategoryForm;
+import com.shoplify.ecommerce_springboot.DTO.CategoryForm;
 
 public interface CategoryService {
     public List<Category> findAllCategories ();

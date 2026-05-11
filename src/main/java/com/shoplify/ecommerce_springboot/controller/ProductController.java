@@ -1,7 +1,7 @@
 package com.shoplify.ecommerce_springboot.controller;
 
-import DTO.ProductForm;
-import DTO.APIResponse;
+import com.shoplify.ecommerce_springboot.DTO.ProductForm;
+import com.shoplify.ecommerce_springboot.DTO.APIResponse;
 import com.shoplify.ecommerce_springboot.model.Product;
 import com.shoplify.ecommerce_springboot.service.ProductService;
 import jakarta.validation.Valid;

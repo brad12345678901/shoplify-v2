@@ -6,7 +6,7 @@ import com.shoplify.ecommerce_springboot.repository.CategoryRepository;
 import com.shoplify.ecommerce_springboot.service.CategoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import DTO.CategoryForm;
+import com.shoplify.ecommerce_springboot.DTO.CategoryForm;
 import java.util.List;
 
 @Service
