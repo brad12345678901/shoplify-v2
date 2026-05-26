@@ -108,4 +108,12 @@ public class Product extends BaseEntity {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public List<ProductImage> getProductImages() {
+        return productImages;
+    }
+
+    public void setProductImages(List<ProductImage> productImages) {
+        this.productImages = productImages;
+    }
 }

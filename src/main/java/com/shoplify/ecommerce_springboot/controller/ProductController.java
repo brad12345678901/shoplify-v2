@@ -2,6 +2,7 @@ package com.shoplify.ecommerce_springboot.controller;
 
 import com.shoplify.ecommerce_springboot.DTO.ProductForm;
 import com.shoplify.ecommerce_springboot.DTO.APIResponse;
+import com.shoplify.ecommerce_springboot.DTO.ProductResourceList;
 import com.shoplify.ecommerce_springboot.model.Product;
 import com.shoplify.ecommerce_springboot.service.ProductService;
 import jakarta.validation.Valid;
@@ -22,11 +23,13 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<APIResponse<List<Product>>>listProducts() {
+    public ResponseEntity<APIResponse<List<ProductResourceList>>>listProducts() {
 
-        List<Product> allProducts = productService.findAllProducts();
+        List<ProductResourceList> allProducts = productService.findAllProducts();
 
-        APIResponse<List<Product>> response = new APIResponse<>(
+        System.out.println(allProducts);
+
+        APIResponse<List<ProductResourceList>> response = new APIResponse<>(
                 HttpStatus.OK.value(),
                 true,
                 "Fetched Product Successfully",

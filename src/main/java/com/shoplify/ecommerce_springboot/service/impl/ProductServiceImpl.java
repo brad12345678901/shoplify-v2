@@ -1,6 +1,7 @@
 package com.shoplify.ecommerce_springboot.service.impl;
 
 import com.shoplify.ecommerce_springboot.DTO.ProductForm;
+import com.shoplify.ecommerce_springboot.DTO.ProductResourceList;
 import com.shoplify.ecommerce_springboot.exception.ResourceNotFoundException;
 import com.shoplify.ecommerce_springboot.model.Category;
 import com.shoplify.ecommerce_springboot.model.Product;
@@ -30,12 +31,27 @@ public class ProductServiceImpl implements ProductService {
         this.fileService = fileService;
     }
 
-    public List<Product> findAllProducts() {
-        return product_db.findAll();
+    public List<ProductResourceList> findAllProducts() {
+
+        List<Product> products = product_db.findAll();
+
+        return products.stream().map(product ->
+            new ProductResourceList(
+                    product.getId(),
+                    product.getName(),
+                    product.getType(),
+                    product.getDescription(),
+                    product.getPrice(),
+                    product.getStock(),
+                    product.getCategory().getId(),
+                    product.getCategory().getName(),
+                    product.getProductImages().stream().map(ProductImage::getFilepath).toList())
+        ).toList();
     }
 
     @Transactional
     public Product saveProduct(ProductForm dto) {
+        System.out.println(dto);
         Category referenceCategory = category_db.findById(dto.category()).orElseThrow(() -> new ResourceNotFoundException("Category ID "+dto.category()+" was not found"));
         ProductImage productImage;
 

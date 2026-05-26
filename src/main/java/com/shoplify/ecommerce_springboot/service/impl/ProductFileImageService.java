@@ -26,6 +26,7 @@ public class ProductFileImageService implements FileService<ProductImage, Produc
     @Override
     public ProductImage saveFile(Product product, MultipartFile file) throws IOException {
         String completePath = uploadDir +"/"+ product.getId();
+        System.out.println(completePath);
         Path imageFolder = Paths.get(completePath).toAbsolutePath().normalize();
         Files.createDirectories(imageFolder);
 
@@ -38,11 +39,13 @@ public class ProductFileImageService implements FileService<ProductImage, Produc
         System.out.println(targetPath);
         file.transferTo(targetPath);
 
+        String ImageURL = "upload/images/" + product.getId() + "/" + fileName;
+
         return new ProductImage(
                 fileName,
                 file.getContentType(),
                 file.getSize(),
-                targetPath.toString(),
+                ImageURL,
                 product
         );
     }
