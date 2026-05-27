@@ -1,13 +1,7 @@
 package com.shoplify.ecommerce_springboot.repository;
 
-import com.shoplify.ecommerce_springboot.model.Product;
+import com.shoplify.ecommerce_springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-
-//    @Query("SELECT p FROM ")
-//    Optional<List<Product>> findProductsWithImages();
 }

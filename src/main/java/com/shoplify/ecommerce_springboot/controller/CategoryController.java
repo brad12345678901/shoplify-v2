@@ -2,7 +2,7 @@ package com.shoplify.ecommerce_springboot.controller;
 
 import com.shoplify.ecommerce_springboot.DTO.APIResponse;
 import com.shoplify.ecommerce_springboot.DTO.CategoryForm;
-import com.shoplify.ecommerce_springboot.model.Category;
+import com.shoplify.ecommerce_springboot.entity.Category;
 import com.shoplify.ecommerce_springboot.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

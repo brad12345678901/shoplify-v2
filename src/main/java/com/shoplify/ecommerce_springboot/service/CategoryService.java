@@ -1,6 +1,6 @@
 package com.shoplify.ecommerce_springboot.service;
 
-import com.shoplify.ecommerce_springboot.model.Category;
+import com.shoplify.ecommerce_springboot.entity.Category;
 import java.util.List;
 import com.shoplify.ecommerce_springboot.DTO.CategoryForm;
 

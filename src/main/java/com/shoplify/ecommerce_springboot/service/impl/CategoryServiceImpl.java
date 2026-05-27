@@ -1,7 +1,7 @@
 package com.shoplify.ecommerce_springboot.service.impl;
 
 import com.shoplify.ecommerce_springboot.exception.ResourceNotFoundException;
-import com.shoplify.ecommerce_springboot.model.Category;
+import com.shoplify.ecommerce_springboot.entity.Category;
 import com.shoplify.ecommerce_springboot.repository.CategoryRepository;
 import com.shoplify.ecommerce_springboot.service.CategoryService;
 import org.springframework.stereotype.Service;

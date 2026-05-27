@@ -3,7 +3,7 @@ package com.shoplify.ecommerce_springboot.controller;
 import com.shoplify.ecommerce_springboot.DTO.ProductForm;
 import com.shoplify.ecommerce_springboot.DTO.APIResponse;
 import com.shoplify.ecommerce_springboot.DTO.ProductResourceList;
-import com.shoplify.ecommerce_springboot.model.Product;
+import com.shoplify.ecommerce_springboot.entity.Product;
 import com.shoplify.ecommerce_springboot.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.shoplify.ecommerce_springboot.service.impl;
 
-import com.shoplify.ecommerce_springboot.model.Product;
-import com.shoplify.ecommerce_springboot.model.ProductImage;
+import com.shoplify.ecommerce_springboot.entity.Product;
+import com.shoplify.ecommerce_springboot.entity.ProductImage;
 import com.shoplify.ecommerce_springboot.service.FileService;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Value;

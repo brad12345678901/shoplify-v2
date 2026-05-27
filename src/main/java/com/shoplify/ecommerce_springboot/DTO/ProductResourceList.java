@@ -1,7 +1,5 @@
 package com.shoplify.ecommerce_springboot.DTO;
 
-import com.shoplify.ecommerce_springboot.model.Product;
-
 import java.util.List;
 
 public record ProductResourceList (

@@ -1,4 +1,4 @@
-package com.shoplify.ecommerce_springboot.model;
+package com.shoplify.ecommerce_springboot.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
