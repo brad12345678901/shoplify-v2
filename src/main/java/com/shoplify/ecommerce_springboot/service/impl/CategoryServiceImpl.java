@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class CategoryServiceImpl implements CategoryService {
-    CategoryRepository db;
+    private CategoryRepository db;
 
     public CategoryServiceImpl(CategoryRepository db) {
         this.db = db;

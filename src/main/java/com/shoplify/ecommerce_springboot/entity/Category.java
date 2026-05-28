@@ -23,6 +23,15 @@ public class Category extends BaseEntity {
     @OneToMany(mappedBy = "category", cascade = CascadeType.DETACH)
     private List<Product> products;
 
+    public Category(long id, String name, List<Product> products) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+    }
+
+    public Category() {
+    }
+
     public long getId() {
         return id;
     }
@@ -37,5 +46,13 @@ public class Category extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
