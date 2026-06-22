@@ -10,18 +10,17 @@ export default function NavigationHeader({ activeSection }: props) {
   const getBlockByActiveSection = (section: string) => {
     switch (section) {
       case "home":
-        return "start";
-      case "contactus":
-        return "end";
-      default:
         return "center";
+      case "aboutus":
+        return "center";
+      default:
+        return "end";
     }
   };
   const handleNavClick = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       const block = getBlockByActiveSection(id);
-      console.log(block);
       element.scrollIntoView({ behavior: "smooth", block: block });
     }
   };
