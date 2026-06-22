@@ -1,0 +1,21 @@
+# Step 1: Build stage (Using Maven and JDK 21)
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
+WORKDIR /app
+
+# Copy the build configuration files first to cache dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+# Copy source code and build the application package
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Step 2: Lightweight runtime stage (Using JRE 21)
+FROM eclipse-temurin:21-jre-alpine AS runtime
+WORKDIR /app
+
+# Copy the compiled jar from the build stage
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
