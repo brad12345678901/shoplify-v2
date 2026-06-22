@@ -1,0 +1,29 @@
+###
+GET http://localhost:8080/api/products
+
+###
+GET http://localhost:8080/api/products/3
+
+###
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Item",
+  "type": "Item Type",
+  "description": "Sample Item",
+  "price": 12.99,
+  "stock": 3
+}
+
+###
+PUT http://localhost:8080/api/products/3
+Content-Type: application/json
+
+{
+  "name": "Item",
+  "type": "Item Type",
+  "description": "Sample Item",
+  "price": 12.99,
+  "stock": 3
+}
