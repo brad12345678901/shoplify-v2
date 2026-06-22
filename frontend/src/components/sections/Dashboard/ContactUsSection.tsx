@@ -1,22 +1,11 @@
-import { useEffect, type SetStateAction } from "react";
-import { useInView } from "react-intersection-observer";
-
 type props = {
-  onVisible: React.Dispatch<SetStateAction<string>>;
+  visited: boolean;
 };
 
-export default function ContactUsSection({ onVisible }: props) {
-  const { ref, inView } = useInView({ threshold: 0.8 });
-
-  useEffect(() => {
-    if (inView) {
-      onVisible("contactus");
-    }
-  }, [inView, onVisible]);
-
+export default function ContactUsSection({ visited }: props) {
   return (
-    <section id="contactus" ref={ref}>
-      <div className="bg-black text-white pt-20">
+    <section id="contactus" data-scroll-section>
+      <div className="bg-black text-white pt-20 min-h-150">
         <div className="flex flex-row justify-center gap-x-10 py-10">
           <div className="max-w-2xs">
             <p>ICON</p>
