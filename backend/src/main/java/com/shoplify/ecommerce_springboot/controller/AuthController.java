@@ -3,8 +3,10 @@ package com.shoplify.ecommerce_springboot.controller;
 import com.shoplify.ecommerce_springboot.DTO.APIResponse;
 import com.shoplify.ecommerce_springboot.DTO.LoginForm;
 import com.shoplify.ecommerce_springboot.DTO.RegisterForm;
+import com.shoplify.ecommerce_springboot.DTO.UserDTO;
 import com.shoplify.ecommerce_springboot.entity.Product;
 import com.shoplify.ecommerce_springboot.entity.User;
+import com.shoplify.ecommerce_springboot.exception.ResourceNotFoundException;
 import com.shoplify.ecommerce_springboot.repository.UserRepository;
 import com.shoplify.ecommerce_springboot.security.JwtUtil;
 import jakarta.validation.Valid;
@@ -50,10 +52,14 @@ public class AuthController {
         );
 
         Map<String, Object> data = new HashMap<>();
-
         data.put("token", jwtUtils.generateToken(userForm.email()));
         final UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
+        if (userDetails == null) {
+            throw new ResourceNotFoundException("Email or Password may be invalid");
+        }
+        User user = userRepository.findByEmail(userDetails.getUsername()).orElseThrow(() -> new ResourceNotFoundException("User email "+userDetails.getUsername()+" Not found"));
+        UserDTO newDTO = new UserDTO(user.getId(), user.getFirstName(), user.getMiddleName(), user.getLastName(), user.getFirstName() +' '+ user.getLastName(), user.getEmail());
+        data.put("user", newDTO);
         APIResponse<Map<String, Object>> response = new APIResponse<>(
                 HttpStatus.OK.value(),
                 true,
