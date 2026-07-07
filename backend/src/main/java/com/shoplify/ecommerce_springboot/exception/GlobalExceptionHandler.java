@@ -31,11 +31,11 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
 
         ErrorResponse errorResponse = new ErrorResponse(
-          HttpStatus.BAD_REQUEST.value(),
-          false,
-          "Provided request form has invalid data",
-          System.currentTimeMillis(),
-          errors
+                HttpStatus.BAD_REQUEST.value(),
+                false,
+                "Provided request form has invalid data",
+                System.currentTimeMillis(),
+                errors
         );
 
         ex.getBindingResult().getFieldErrors().forEach(error -> {
@@ -63,7 +63,7 @@ public class GlobalExceptionHandler {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 false,
-                "An unexpected error occurred",
+                ex.getMessage(),
                 System.currentTimeMillis()
         );
 
