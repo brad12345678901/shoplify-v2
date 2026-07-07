@@ -44,16 +44,20 @@ export default function NavigationHeader({ activeSection }: props) {
     });
   };
 
+  function loginFormSubmitHandler(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
       {modal.loginModal && (
         <LoginForm open={modal.loginModal} toggleModal={toggleLoginModal}>
           <h2 className="font-bold">Login Form</h2>
           <hr />
-          <form>
+          <form onSubmit={loginFormSubmitHandler}>
             <FormInput label="Email" />
             <FormInput label="Password" type="password" />
-            <Button>Submit</Button>
+            <Button type="submit">Submit</Button>
           </form>
         </LoginForm>
       )}

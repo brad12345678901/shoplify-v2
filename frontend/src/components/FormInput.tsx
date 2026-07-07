@@ -12,17 +12,20 @@ type FormInputTypes = {
   inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
   inputClassName?: string;
   label?: string;
-  noLabel? : boolean;
+  noLabel?: boolean;
   accept?: string;
   labelClassName?: string;
+  alt?: string;
 };
 
 export default function FormInput(props: FormInputTypes) {
   if (props.type === "file")
     return (
       <>
-        <div className = "p-2 border-2 border-red-500 text-red-500 place-items-center">
-          <p>ERROR: USE <code>FormFileInput.tsx</code> INSTEAD!</p>
+        <div className="p-2 border-2 border-red-500 text-red-500 place-items-center">
+          <p>
+            ERROR: USE <code>FormFileInput.tsx</code> INSTEAD!
+          </p>
         </div>
       </>
     );
@@ -30,9 +33,11 @@ export default function FormInput(props: FormInputTypes) {
     return (
       <>
         <div>
-          {!props.noLabel && <label className={clsx("font-semibold pr-2", props.labelClassName)}>
-            {props.label ? props.label : "Label"}
-          </label>}
+          {!props.noLabel && (
+            <label className={clsx("font-semibold pr-2", props.labelClassName)}>
+              {props.label ? props.label : "Label"}
+            </label>
+          )}
           <input
             className={clsx(
               `border rounded-md outline-none ring-0 focus:outline-none focus:ring-0 p-2`,
@@ -54,9 +59,11 @@ export default function FormInput(props: FormInputTypes) {
     return (
       <>
         <div>
-          {!props.noLabel && <label className={clsx("font-semibold pr-2", props.labelClassName)}>
-            {props.label ? props.label : "Label"}
-          </label>}
+          {!props.noLabel && (
+            <label className={clsx("font-semibold pr-2", props.labelClassName)}>
+              {props.label ? props.label : "Label"}
+            </label>
+          )}
           <textarea
             className={clsx(
               `border rounded-md outline-none ring-0 focus:outline-none focus:ring-0 p-2`,
